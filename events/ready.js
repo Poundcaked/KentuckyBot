@@ -26,7 +26,8 @@ list_of_messages = ['I pledge 🤚 allegiance ❤️ to the rags 👕  Near the 
     '💀 Those who know: 🐂💨🚽', 
     '<@&1145876166759157850>... Alright plebians,... wake up! Wake up and smell👃👃👃 the ashes!', 
     'Sweetness 👽',
-    'PISRAT!!!!!!!!!!!!! 😂😂👆😂👆👆 (like Mustard!!!!!!!!!!!! kendrick lamar 😭😭💔'
+    'PISRAT!!!!!!!!!!!!! 😂😂👆😂👆👆 (like Mustard!!!!!!!!!!!! kendrick lamar) 😭😭💔',
+    'My favorite number is '+mathRandomInt(1,Date.now()) + ', anyone else? 🤔🤔'
 ];
 
 function makeMessage() {
@@ -40,7 +41,7 @@ function makeMessage() {
     return message;
 }
 
-function colourRandom() {
+function colorRandom() {
     var num = Math.floor(Math.random() * Math.pow(2, 24));
     return '#' + ('00000' + num.toString(16)).substr(-6);
 }
@@ -56,16 +57,19 @@ function mathRandomInt(a, b) {
 }
 
 var randomTime = 0;
+var currentDate = Date.now();
 
 module.exports = {
 	name: Events.ClientReady,
 	once: true,
 	async execute(client) {
-      client.channels.cache.find((channel)=> channel.name === 'general').send("What is up my bluds 🙋‍♂️👋👋! Kentucky Chibbleson here! 👍👽. Took a quick nap! 💤💤😴");
+      //client.channels.cache.find((channel)=> channel.name === 'general').send("What is up my bluds 🙋‍♂️👋👋! Kentucky Chibbleson here! 👍👽. Took a quick nap! 💤💤😴");
 
         while(client && client.token){
             randomTime = Number((mathRandomInt(1, 7200)))*1000;
-            console.log(randomTime / 1000 + "s until message");
+            var predictedTime = currentDate + randomTime;
+            var date = new Date(predictedTime)
+            console.log("Next message on "+date.toTimeString() + " or "+randomTime / 1000 + "s until message");
             await delay(randomTime);
             client.channels.cache.find((channel) => channel.name === 'general').send((makeMessage()));
         }

@@ -20,12 +20,10 @@ module.exports = {
 	async execute(interaction) {
 		interaction.reply('Detecting ...');
 
-		await delay(1000);
+		await delay(mathRandomInt(1000,2000));
 
 		await interaction.editReply('Found a troglodyte! It is <@'+ interaction.guild.members.cache.random().id +'>');
 
-
-		
 	},
 };
 

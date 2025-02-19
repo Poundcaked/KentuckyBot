@@ -11,6 +11,12 @@ function mathRandomInt(a, b) {
     }
     return Math.floor(Math.random() * (b - a + 1) + a);
 }
+        
+function attachIsImage(msgAttach) {
+    var url = msgAttach.url;
+    //True if this url is a png image.
+    return url.indexOf("png", url.length - "png".length /*or 3*/) !== -1;
+}
 
 module.exports = {
     name: Events.MessageCreate,
@@ -32,10 +38,16 @@ module.exports = {
             }
         }
 
-        if(message.content.length == 0 && !message.system && !message.poll){
+        if(message.content.length == 0 && !message.system && !message.poll && message.attachments.size > 0){
             if(message.embeds){
-                message.react('💨');
-                message.reply("Dawg sent an image 😭👍🙋‍♂️!");
+                if (message.attachments.size > 0) {
+                    if (message.attachments.every(attachIsImage)){
+                        message.react('🐌');
+                        message.react('💨');
+                        message.reply("Dawg sent an image 😭👍🙋‍♂️!");
+                    }
+                }
+                
             }
         }
 
@@ -47,6 +59,10 @@ module.exports = {
 
         if((message.content.includes('Kentucky') || message.content.includes('kentucky')) && !message.member.user.bot){
             message.reply('Did I hear my name? 🤔🤔??');
+        }
+
+        if((message.content.includes('hi')  && !message.member.user.bot)){
+            message.reply('Sup brah! Yo soy Kentucky Chibbleson 🐌');
         }
 
         
