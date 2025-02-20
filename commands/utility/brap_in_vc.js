@@ -32,10 +32,6 @@ module.exports = {
 			console.error('Error:', error.message, 'with track', error.resource.metadata.title);
 		});
 
-		audioPlayer.on(AudioPlayerStatus.Playing, () => {
-			console.log('The audio player has started playing!');
-		});
-		
 		const connection = joinVoiceChannel({
 			channelId: channel.id,
 			guildId: channel.guild.id,
@@ -65,7 +61,7 @@ module.exports = {
 
 		});
 		
-		await interaction.reply('You got it, dawg!');
+		await interaction.reply({ content: 'Alright, pal! Let\'s keep this between us though, got it dawg?', flags: MessageFlags.Ephemeral });
 	},
 };
 

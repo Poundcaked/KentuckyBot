@@ -73,7 +73,7 @@ module.exports = {
             randomTime = Number((mathRandomInt(1, 7200)))*1000;
             var predictedTime = currentDate + randomTime;
             var date = new Date(predictedTime)
-            console.log("Next message on "+date.toTimeString() + " or "+randomTime / 1000 + "s until message");
+            console.log("Next message at "+date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })+ " or "+randomTime / 1000 + "s until message");
             await delay(randomTime);
             client.channels.cache.find((channel) => channel.name === 'general').send((makeMessage()));
         }
