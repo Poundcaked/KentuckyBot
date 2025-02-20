@@ -9,6 +9,10 @@
   "author": "Poundcake",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.16.3"
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.18.0",
+    "discord.js": "^14.16.3",
+    "libsodium-wrappers": "^0.7.15",
+    "opusscript": "^0.0.8"
   }
 }

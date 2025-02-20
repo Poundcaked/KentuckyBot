@@ -26,8 +26,8 @@ module.exports = {
         }
 
         if((message.author.id) == '824780208383983687'){
-            if(mathRandomInt(1,4)==1){
-                message.channel.send(String(('I agree with the following message: \"' + String(String(message.content) + '\" ✅✅✅✅✅'))));
+            if(mathRandomInt(1,10)==1){
+                message.author.send("STOP IT 😡😡😡😡😡😡😡😡😡😡 Your message \""+message.content+"\" is very BAD (And made by AI)");
             }  
         }
 
@@ -63,6 +63,17 @@ module.exports = {
 
         if((message.content.includes('hi')  && !message.member.user.bot)){
             message.reply('Sup brah! Yo soy Kentucky Chibbleson 🐌');
+        }
+
+        if((message.content.includes('no')  && !message.member.user.bot)){
+            message.reply('Why not, dawg? 👎👎💀');
+        }
+
+        if((message.member.user.bot && message.author.id != '1167280848127655947')){
+            if(mathRandomInt(1,50)==1){
+                message.reply('Lil brahskie is a bot 💀😲😂👎👆🐟💵');
+            }
+            
         }
 
         

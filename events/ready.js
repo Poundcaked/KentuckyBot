@@ -1,9 +1,11 @@
 const { Events } = require('discord.js');
+const { ActivityType } = require('discord.js');
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 var list_of_messages, message, last_message;
 
-list_of_messages = ['I pledge 🤚 allegiance ❤️ to the rags 👕  Near the nasty 🤮 place 🌆 of Joandre’s 👨🏻 Bum 🟡🟡'+'\n'+'  And to the Blackpink 🇰🇷 for which it stands 🧍‍♂️'+'\n'+'  One 1️⃣ phone 📱 '+'\n'+' Inside a toilet 🚽  '+'\n'+' With piles of poo 💩'+'\n'+'  and Joandre 👨🏻 on top 🔝', 
+list_of_messages = [
+    'I pledge 🤚 allegiance ❤️ to the rags 👕  Near the nasty 🤮 place 🌆 of Joandre’s 👨🏻 Bum 🟡🟡'+'\n'+'  And to the Blackpink 🇰🇷 for which it stands 🧍‍♂️'+'\n'+'  One 1️⃣ phone 📱 '+'\n'+' Inside a toilet 🚽  '+'\n'+' With piles of poo 💩'+'\n'+'  and Joandre 👨🏻 on top 🔝', 
     'DEAD CHAT ☠☠☠☠☠☠☠☠ 💀💀💀💀💀💀', 
     'ALIVE CHAT 😁😁😁✅✅✅✅🧪🦚', 
     'Hola guys.... I am Kentucky Chibbleson', 
@@ -27,7 +29,8 @@ list_of_messages = ['I pledge 🤚 allegiance ❤️ to the rags 👕  Near the 
     '<@&1145876166759157850>... Alright plebians,... wake up! Wake up and smell👃👃👃 the ashes!', 
     'Sweetness 👽',
     'PISRAT!!!!!!!!!!!!! 😂😂👆😂👆👆 (like Mustard!!!!!!!!!!!! kendrick lamar) 😭😭💔',
-    'My favorite number is '+mathRandomInt(1,Date.now()) + ', anyone else? 🤔🤔'
+    'My favorite number is '+mathRandomInt(1,Date.now()) + ', anyone else? 🤔🤔',
+    'Pisrat is from ohio 😂😂'
 ];
 
 function makeMessage() {
@@ -64,6 +67,7 @@ module.exports = {
 	once: true,
 	async execute(client) {
       //client.channels.cache.find((channel)=> channel.name === 'general').send("What is up my bluds 🙋‍♂️👋👋! Kentucky Chibbleson here! 👍👽. Took a quick nap! 💤💤😴");
+      client.user.setActivity('Gorgonine Simulator X: 2002 Edition', { type: ActivityType.Playing });
 
         while(client && client.token){
             randomTime = Number((mathRandomInt(1, 7200)))*1000;

@@ -11,13 +11,13 @@ intents: [
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildEmojisAndStickers,
     GatewayIntentBits.GuildMessageTyping,
     GatewayIntentBits.GuildMessagePolls,
     GatewayIntentBits.GuildMessageReactions,
     GatewayIntentBits.GuildMessageTyping,
     GatewayIntentBits.GuildScheduledEvents,
-	GatewayIntentBits.DirectMessagePolls
+	GatewayIntentBits.DirectMessagePolls,
+	GatewayIntentBits.GuildVoiceStates
 ],
 
 });
