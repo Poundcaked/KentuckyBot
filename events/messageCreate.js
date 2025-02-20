@@ -67,11 +67,11 @@ module.exports = {
         }
         
         //interject greetings
-        if((message.content.includes('hi')  && !message.member.user.bot)){
+        if((message.content.includes('hi ')  && !message.member.user.bot)){
             message.reply('Sup brah! Yo soy Kentucky Chibbleson 🐌');
         }
         //interject denial
-        if((message.content.includes('no')  && !message.member.user.bot)){
+        if((message.content.includes('no ')  && !message.member.user.bot)){
             message.reply('Why not, dawg? 👎👎💀');
         }
         //insult bots
@@ -81,9 +81,24 @@ module.exports = {
             }
             
         }
-
-        
-          
+        //insult gulchers
+        if((message.channelId == '1277763901471195136' && !message.member.user.bot)){
+            const expr = mathRandomInt(1,4);
+            switch (expr) {
+            case 1:
+                message.reply('Dawg is gulched ☠☠☠');
+                break;
+            case 2:
+                message.reply('Blud spoke in the gulch channel');
+                break;
+            case 3:
+                message.reply('Matthew Blackford despises you');
+                break;
+            case 4:
+                message.reply('Ariston Regala loves you ❤❤❤');
+                break;
+            }
+        }
     }
         
 };
