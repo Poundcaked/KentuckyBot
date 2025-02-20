@@ -70,6 +70,7 @@ module.exports = {
       client.user.setActivity('Gorgonine Simulator X: 2002 Edition', { type: ActivityType.Playing });
 
         while(client && client.token){
+            currentDate = Date.now();
             randomTime = Number((mathRandomInt(1, 7200)))*1000;
             var predictedTime = currentDate + randomTime;
             var date = new Date(predictedTime)
