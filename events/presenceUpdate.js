@@ -1,4 +1,4 @@
-const { Events, Guild} = require('discord.js');
+const { Events } = require('discord.js');
 
 module.exports = {
     name: Events.PresenceUpdate,
@@ -7,7 +7,7 @@ module.exports = {
 
         if(newPresence.activities > 0){
             for(var i = 0; i<activities.length;i++ ){
-                if(user.presence.activities.find(activity => activity.type === 'PLAYING').applicationID = '700136079562375258'){
+                if(user.presence.activities.find(activity => activity.type === 'PLAYING').applicationId == '700136079562375258'){
                     client.channels.cache.find((channel) => channel.name === 'general').send("P.U.!!!!! Someone in here just started playing Valorant! 🍗🍗🍗");
                 }
             }

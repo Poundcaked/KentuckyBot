@@ -3,8 +3,6 @@ const { joinVoiceChannel } = require('@discordjs/voice');
 const { getVoiceConnection } = require('@discordjs/voice');
 const { createAudioPlayer } = require('@discordjs/voice');
 const { VoiceConnectionStatus } = require('@discordjs/voice');
-const { createReadStream } = require('node:fs');
-const { join } = require('node:path');
 const { createAudioResource, StreamType } = require('@discordjs/voice');
 const { AudioPlayerStatus } = require('@discordjs/voice');
 const { MessageFlags } = require('discord.js');
@@ -47,7 +45,7 @@ module.exports = {
 			const id = mathRandomInt(1,7);
 			const resource = createAudioResource('assets/sound/Brap' + id + '.mp3', {
 					metadata: {
-						title: 'A good brap!',
+						title: 'A brap!',
 					},
 			});
 			
