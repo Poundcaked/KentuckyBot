@@ -7,6 +7,8 @@ const { createReadStream } = require('node:fs');
 const { join } = require('node:path');
 const { createAudioResource, StreamType } = require('@discordjs/voice');
 const { AudioPlayerStatus } = require('@discordjs/voice');
+const { MessageFlags } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
 
 
 function mathRandomInt(a, b) {
@@ -51,8 +53,6 @@ module.exports = {
 			
 			audioPlayer.play(resource);
 
-			console.log('Audio File: '+ id);
-
 			if (subscription) {
 				setTimeout(() => subscription.unsubscribe(), 2000);
 				setTimeout(() => audioPlayer.stop(), 2000);;
@@ -62,6 +62,8 @@ module.exports = {
 		});
 		
 		await interaction.reply({ content: 'Alright, pal! Let\'s keep this between us though, got it dawg?', flags: MessageFlags.Ephemeral });
+		await wait(3_000);
+		await interaction.editReply('The job is done, cuh!');
 	},
 };
 
