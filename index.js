@@ -8,15 +8,19 @@ const client = new Client({
 intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
+	
     GatewayIntentBits.GuildMembers,
+	GatewayIntentBits.GuildModeration,
+	GatewayIntentBits.GuildScheduledEvents,
+
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.MessageContent,
+	GatewayIntentBits.DirectMessagePolls,
+
     GatewayIntentBits.GuildMessageTyping,
     GatewayIntentBits.GuildMessagePolls,
     GatewayIntentBits.GuildMessageReactions,
     GatewayIntentBits.GuildMessageTyping,
-    GatewayIntentBits.GuildScheduledEvents,
-	GatewayIntentBits.DirectMessagePolls,
 	GatewayIntentBits.GuildVoiceStates
 ],
 
@@ -52,7 +56,7 @@ for (const file of eventFiles) {
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
-		client.on(event.name, (...args) => event.execute(...args));
+		client.on(event.name, (...args) => event.execute(...args,client));
 	}
 }
 

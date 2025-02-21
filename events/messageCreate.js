@@ -29,10 +29,12 @@ module.exports = {
            }
         }
 
-        //send luke (10%chance) each message dm
+        //send luke (4%chance) each message dm
         if((message.author.id) == '824780208383983687'){
-            if(mathRandomInt(1,10)==1){
-                message.author.send("STOP IT 😡😡😡😡😡😡😡😡😡😡 Your message \""+message.content+"\" is very BAD (And made by AI)");
+            if(mathRandomInt(1,25)==1){
+                message.author.send("STOP IT 😡😡😡😡😡😡😡😡😡😡 Your message \""+message.content+"\" is very BAD (And made by AI)")
+                .then(message => console.log(`Sent message: ${message.content}`))
+                .catch(console.error);
             }  
         }
         
