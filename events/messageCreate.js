@@ -82,8 +82,8 @@ module.exports = {
             
         }
         //insult gulchers
-        if((message.channelId == '1277763901471195136' && !message.member.user.bot)){
-            const expr = mathRandomInt(1,4);
+        if((message.channelId == '1277763901471195136' || message.channelId == '1342271815476707490' && !message.member.user.bot)){
+            const expr = mathRandomInt(1,6);
             switch (expr) {
             case 1:
                 message.reply('Dawg is gulched ☠☠☠');
@@ -96,6 +96,8 @@ module.exports = {
                 break;
             case 4:
                 message.reply('Ariston Regala loves you ❤❤❤');
+                break;
+            default:
                 break;
             }
         }
