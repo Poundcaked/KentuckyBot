@@ -69,39 +69,35 @@ module.exports = {
         }
         
         //interject greetings
-        if((message.content.includes('hi ')  && !message.member.user.bot)){
+        if((message.content.includes('hi ')  && !message.member.user.bot) || (message.content.includes('hi') && message.content.length == 2 && !message.member.user.bot)){
             message.reply('Sup brah! Yo soy Kentucky Chibbleson 🐌');
         }
         //interject denial
-        if((message.content.includes('no ')  && !message.member.user.bot)){
-            message.reply('Why not, dawg? 👎👎💀');
-        }
-        //insult bots
-        if((message.member.user.bot && message.author.id != '1167280848127655947')){
-            if(mathRandomInt(1,50)==1){
-                message.reply('Lil brahskie is a bot 💀😲😂👎👆🐟💵');
-            }
-            
+        if((message.content.includes('no ')  && !message.member.user.bot) || (message.content.includes('no') && message.content.length == 2 && !message.member.user.bot)){
+             message.reply('Why not, dawg? 👎👎💀');
         }
         //insult gulchers
-        if((message.channelId == '1277763901471195136' || message.channelId == '1342271815476707490' && !message.member.user.bot)){
-            const expr = mathRandomInt(1,6);
-            switch (expr) {
-            case 1:
-                message.reply('Dawg is gulched ☠☠☠');
-                break;
-            case 2:
-                message.reply('Blud spoke in the gulch channel');
-                break;
-            case 3:
-                message.reply('Matthew Blackford despises you');
-                break;
-            case 4:
-                message.reply('Ariston Regala loves you ❤❤❤');
-                break;
-            default:
-                break;
+        if((message.channelId == '1277763901471195136' || message.channelId == '1342271815476707490')){
+            if(!message.member.user.bot){
+                const expr = mathRandomInt(1,10);
+                switch (expr) {
+                case 1:
+                    message.reply('Dawg is gulched ☠☠☠');
+                    break;
+                case 2:
+                    message.reply('Blud spoke in the gulch channel');
+                    break;
+                case 3:
+                    message.reply('Matthew Blackford despises you');
+                    break;
+                case 4:
+                    message.reply('Ariston Regala loves you ❤❤❤');
+                    break;
+                default:
+                    break;
+                }
             }
+            
         }
     }
         

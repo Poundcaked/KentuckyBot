@@ -18,11 +18,10 @@ module.exports = {
         const id = user.id;
         const member = message.guild.members.cache.find(user => user.id === id);
         if(!user.bot){
-            console.log(member);
             if (reaction.message.author.id == '1167280848127655947'){
-                channel.send("Dawg really thought he could react to my message and get away with it.... "+user.username+".... shun! shun! shun! 😡😡");
+                channel.send("Dawg really thought he could react to my message and get away with it.... "+user.globalName+".... shun! shun! shun! 😡😡");
 
-                const expr = mathRandomInt(1,4);
+                const expr = mathRandomInt(1,5);
                 var msg = "";
                 switch (expr) {
                 case 1:
@@ -37,6 +36,9 @@ module.exports = {
                 case 4:
                     msg = "Los que DieAr 🙄 (You)";
                     break;
+                case 5:
+                    msg = "And stay out!";
+                    break;
                 default:
                     break;
                 }
@@ -46,9 +48,9 @@ module.exports = {
                     .catch(console.error);
                 member.timeout(5_000);
             }else if(user != reaction.message.author && reaction.message.author.id != '1167280848127655947'){
-                channel.send(user.username+" reacted with a "+reaction.emoji.name+", "+reaction.message.author.username+"... you finna take that!? 😒😒😒🤢🤢🥵🤬😡");
+                channel.send(user.globalName+" reacted with a "+reaction.emoji.name+", "+reaction.message.author.globalName+"... you finna take that!? 😒😒😒🤢🤢🥵🤬😡");
             }else if (user == reaction.message.author){
-                channel.send(user.username+" reacted to themselves brah 😂😁😁😂😃🤣! Get your "+reaction.emoji.name+"s out of here 🙄😡");
+                channel.send(user.globalName+" reacted to themselves brah 😂😁😁😂😃🤣! Get your "+reaction.emoji.name+"s out of here 🙄😡");
             } 
             
         }
