@@ -62,7 +62,7 @@ module.exports = {
         }
 
         //if one says "kentucky" respond
-        if((message.content.includes('Kentucky') || message.content.includes('kentucky')) && !message.member.user.bot){
+        if((message.content.includes('Kentucky') || message.content.includes('kentucky') || message.content.includes('<@1167280848127655947>')) && !message.member.user.bot){
             message.reply('Did I hear my name? 🤔🤔??');
         }
         
