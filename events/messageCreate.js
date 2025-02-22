@@ -113,6 +113,12 @@ module.exports = {
              }
              
          }
+
+         if(message.content.includes('https://tenor.com/')){
+            message.react('🤗');
+            message.reply('Blud sent a gif 😂😂😂🤣🤣🤣🤣🤣😂😂🤣🤣');
+         }
+
         }
 
         
