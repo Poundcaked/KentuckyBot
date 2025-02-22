@@ -1,4 +1,4 @@
-const { Events } = require('discord.js');
+const { Events, PermissionsBitField } = require('discord.js');
 
 function mathRandomInt(a, b) {
     if (a > b) {
@@ -18,7 +18,7 @@ module.exports = {
         const id = user.id;
         const member = message.guild.members.cache.find(user => user.id === id);
         if(!user.bot){
-            if (reaction.message.author.id == '1167280848127655947'){
+            if (reaction.message.author.id == '1167280848127655947' && !member.permissions.has(PermissionsBitField.Flags.KickMembers)){
                 channel.send("Dawg really thought he could react to my message and get away with it.... "+user.globalName+".... shun! shun! shun! 😡😡");
 
                 const expr = mathRandomInt(1,5);
