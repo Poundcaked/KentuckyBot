@@ -24,10 +24,22 @@ function mathRandomInt(a, b) {
 module.exports = {
 	data: new SlashCommandBuilder()
 	.setName('plob')
-	.setDescription('Find out your inner Plob!'),
+	.setDescription('Find out your inner Plob!')
+	.addUserOption(option =>
+		option
+			.setName('user')
+			.setDescription('The member to get the Gorgon from')
+			.setRequired(false)),
 	async execute(interaction) {
 		var rand = mathRandomInt(1,plobs.length)-1;
-		await interaction.reply('Your plob is: ' + plobs[rand] +" "+ ids[rand]);
+		const target = interaction.options.getUser('user') ?? null;
+
+		if(target){
+			await interaction.reply(target.globalName+'\'s plob is: ' + plobs[rand] +" "+ ids[rand]);
+		}else{
+			await interaction.reply('Your plob is: ' + plobs[rand] +" "+ ids[rand]);
+		}
+		
 	},
 };
 

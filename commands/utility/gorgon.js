@@ -33,6 +33,25 @@ function mathRandomInt(a, b) {
     return Math.floor(Math.random() * (b - a + 1) + a);
 }
 
+function whatGorgonRoleDoesThisGuyAlreadyHave(member){
+	for(var i = 0; i < gorgons.length; i++){ //loop through gorgons to check if target already has a gorgon role
+		if (member.roles.cache.some(role => role.name === gorgons[i])) {
+
+			return member.roles.cache.find(role => role.name === gorgons[i]).name; //return the role found (only works if user exclusively has one role)
+		}
+	}
+	return null; //return null otherwise
+}
+
+function getIdOfRole(already_existing_role){
+	for(var i = 0; i < gorgons.length; i++){ //loop through ids
+		if (gorgons[i] === already_existing_role.trim()) {
+			return i; //return the id found 
+		}
+	}
+	return -1; //return -1 otherwise
+}
+
 module.exports = {
 	data: new SlashCommandBuilder()
 	.setName('gorgon')
@@ -43,14 +62,55 @@ module.exports = {
 			.setDescription('The member to get the Gorgon from')
 			.setRequired(false)),
 	async execute(interaction) {
+		await interaction.deferReply();
+
 		var rand = mathRandomInt(1,gorgons.length)-1;
 		const target = interaction.options.getUser('user') ?? null;
-		
 
-		if(target){
-			await interaction.reply(target.globalName+'\'s gorgon is: ' + gorgons[rand] +" "+ ids[rand]);
+		
+		const guild_roles = interaction.guild.roles;
+		const random_gorgon_role = gorgons[rand];
+
+
+		const m = await interaction.guild.members.fetch();
+		var member;
+
+		if(target){ //if the person who called the command specified a target
+
+			member = m.find(u => u.user.username === target.username);
+
+			
+		}else{ //if you called it
+			// await interaction.editReply('Your gorgon is: ' + gorgons[rand] +" "+ ids[rand]);
+			member = interaction.member;
+		}
+
+		var flagged = false;
+
+		
+		if(member){
+			for(var i = 0; i < gorgons.length; i++){ //loop through gorgons to check if target already has a gorgon role
+				if (member.roles.cache.some(role => role.name === gorgons[i])) {
+					flagged = true; //flag if true
+					break;
+				}
+			}
 		}else{
-			await interaction.reply('Your gorgon is: ' + gorgons[rand] +" "+ ids[rand]);
+			return await interaction.editReply("User not found in this server.");
+		}
+
+		// Ensure role exists
+		var role = guild_roles.cache.find(role => role.name === random_gorgon_role);
+		if (!role) {
+			return await interaction.editReply("Role not found: " + random_gorgon_role);
+		}
+
+		if(!flagged){ //if they don't already have one
+			member.roles.add(role);
+			await interaction.editReply(member.user.globalName+'\'s gorgon is: ' + random_gorgon_role +" "+ ids[rand]);
+		}else{ //if they do already have one
+			var already_existing_role = whatGorgonRoleDoesThisGuyAlreadyHave(member);
+			await interaction.editReply(member.user.globalName+'\'s gorgon is: ' + already_existing_role +" "+ ids[getIdOfRole(already_existing_role)]);
 		}
 		
 	},
