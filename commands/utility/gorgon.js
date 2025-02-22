@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, InteractionContextType,  ApplicationCommandOptionType} = require('discord.js');
 const gorgons = [
 	'The True Gorgon',
 	'Assimilating Smile',
@@ -36,10 +36,23 @@ function mathRandomInt(a, b) {
 module.exports = {
 	data: new SlashCommandBuilder()
 	.setName('gorgon')
-	.setDescription('Find out your inner Gorgon!'),
+	.setDescription('Find out your inner Gorgon!')
+	.addUserOption(option =>
+		option
+			.setName('user')
+			.setDescription('The member to get the Gorgon from')
+			.setRequired(false)),
 	async execute(interaction) {
 		var rand = mathRandomInt(1,gorgons.length)-1;
-		await interaction.reply('Your gorgon is: ' + gorgons[rand] +" "+ ids[rand]);
+		const target = interaction.options.getUser('user') ?? null;
+		
+
+		if(target){
+			await interaction.reply(target.globalName+'\'s gorgon is: ' + gorgons[rand] +" "+ ids[rand]);
+		}else{
+			await interaction.reply('Your gorgon is: ' + gorgons[rand] +" "+ ids[rand]);
+		}
+		
 	},
 };
 
