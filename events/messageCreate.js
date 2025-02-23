@@ -34,7 +34,7 @@ module.exports = {
             //send luke (4%chance) each message dm
             if((message.author.id) == '824780208383983687'){
                 if(mathRandomInt(1,25)==1){
-                    message.author.send("STOP IT 😡😡😡😡😡😡😡😡😡😡 Your message \""+message.content+"\" is very BAD (And made by AI)")
+                    message.author.send("STOP IT 😡😡😡😡😡😡😡😡😡😡 Your message \""+message.content+"\" STINKS 😭😭😭😭")
                     .then(message => console.log(`Sent message: ${message.content}`))
                     .catch(console.error);
                 }  

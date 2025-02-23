@@ -7,7 +7,7 @@ module.exports = {
         const channel = newMessage.channel;
 
         if(!user.bot){
-            channel.send("BRAH!! <@" + author.id+"> just EDITED their message! Get ready to be leaked, dawg! The previous message was " + oldMessage.content);
+            channel.send("BRAH!! <@" + newMessage.author.id+"> just EDITED their message! Get ready to be leaked, dawg! The previous message was " + oldMessage.content);
         }
         
     }
