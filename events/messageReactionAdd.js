@@ -48,9 +48,51 @@ module.exports = {
                     .catch(console.error);
                 member.timeout(5_000);
             }else if(user != reaction.message.author && reaction.message.author.id != '1167280848127655947'){
-                channel.send(user.globalName+" reacted with a "+reaction.emoji.name+", "+reaction.message.author.globalName+"... you finna take that!? 😒😒😒🤢🤢🥵🤬😡");
+                switch(mathRandomInt(1,10)){
+                    case 1:
+                        channel.send(user.globalName+" reacted with a "+reaction.emoji.name+", "+reaction.message.author.globalName+"... you finna take that!? 😒😒😒🤢🤢🥵🤬😡");
+                        break;
+                    case 2:
+                        channel.send("<@"+user.id +">... why did you react to that guy?");
+                        break;
+                    case 3:
+                        channel.send("Yoo hoo!" + reaction.message.author.globalName+ ", some guy reacted to your message!");
+                        break;
+                    case 4:
+                        channel.send(user.globalName+" thinks he\'s a jokester, brah! Quit your reacting!");
+                        break;
+                    case 5:
+                        channel.send(user.globalName+".... someone likes "+reaction.emoji.name+"! Jee whiz bruddy! "+reaction.message.author.globalName+"..Get a load of this guy😒");
+                        break;
+                    case 6:
+                        channel.send(user.globalName + ", remove that hateful reaction! The ghost of Christmas Bum beckons you!");
+                        break;
+                    case 7:
+                        channel.send("ALERT!!!!!!!!!!! <@"+user.id+"> reacted with a "+reaction.emoji.name+" to "+reaction.message.author.globalName+"\'s message! GROSS!");
+                        break;
+                    case 8:
+                        channel.send("What even are these emojis, dawg?? "+reaction.emoji.name+"s?? Hop on the emoji dictionary broskie");
+                        break;
+                    case 9:
+                        channel.send(user.globalName+" brapped everywhere! Yucky! 😂");
+                        break;
+                    case 10:
+                        channel.send(reaction.message.author.globalName+" is a victim of hatred! @plobmeisters, kill "+ user.globalName+"!");
+                        break;
+                }
+                
             }else if (user == reaction.message.author){
-                channel.send(user.globalName+" reacted to themselves brah 😂😁😁😂😃🤣! Get your "+reaction.emoji.name+"s out of here 🙄😡");
+                switch(mathRandomInt(1,3)){
+                    case 1:
+                        channel.send(user.globalName+" reacted to themselves brah 😂😁😁😂😃🤣! Get your "+reaction.emoji.name+"s out of here 🙄😡");
+                        break;
+                    case 2:
+                        channel.send("Los que reactar to themselves 😂😂😂 it was " + user.globalName);
+                        break;
+                    case 3:
+                        channel.send("Loser alert! Someone here just reacted to themselves😂! It....was.... <@"+user.id+">!")
+                        break;
+                }
             } 
             
         }

@@ -11,13 +11,7 @@ function mathRandomInt(a, b) {
     }
     return Math.floor(Math.random() * (b - a + 1) + a);
 }
-        
-function attachIsImage(msgAttach) {
-    var url = msgAttach.url;
-    //True if this url is a png image.
-    return url.indexOf("png", url.length - "png".length /*or 3*/) !== -1;
-}
-
+    
 module.exports = {
     name: Events.MessageCreate,
     async execute(message){
@@ -43,7 +37,7 @@ module.exports = {
             //ping joandre 5 times if he is @'ed once
             if((message.content.includes(String('<@1140125716709654548>')) || message.content.includes(String('<@1214801319806640141>'))) ){
                 for(var i=0; i < 5; i++){
-                    message.channel.send(String('JOANDRE,'+message.author.globalName+' wants you! 🤤<@1140125716709654548> <@1214801319806640141>'));
+                    message.channel.send(String('JOANDRE, '+message.author.globalName+' wants you! 🤤<@1140125716709654548> <@1214801319806640141>'));
                     await delay(Number(0.1)*1000);
                 }
             }
@@ -51,9 +45,12 @@ module.exports = {
             //check if user sent an image
             if(message.content.length == 0 && !message.system && !message.poll && message.attachments.size > 0){
                 if(message.embeds){
-                    message.react('🐌');
-                    message.react('💨');
-                    message.reply("Dawg sent an image, video, or other piece of media that can be embedded! 😭👍🙋‍♂️!");
+                    if(mathRandomInt(1,25)==1){
+                        message.react('🐌');
+                        message.react('💨');
+                        message.reply("I like this media! Es muy bueno ❤");
+                    }
+                    
                     
                 }
             }
@@ -67,7 +64,7 @@ module.exports = {
     
             //if one says "kentucky" respond
             if((message.content.includes('Kentucky') || message.content.includes('kentucky') || message.content.includes('<@1167280848127655947>')) ){
-                message.reply('Did I hear my name? 🤔🤔??');
+                message.reply('I\'m doing my homework brah! Don\'t bother me🤐🤐 ');
             }
             
             //interject greetings
@@ -116,7 +113,6 @@ module.exports = {
 
             if(message.content.includes('https://tenor.com/')){
                 message.react('🤗');
-                message.reply('Blud sent a gif 😂😂😂🤣🤣🤣🤣🤣😂😂🤣🤣');
             }
 
         }
